@@ -80,7 +80,7 @@ mod.setting(
 mod.setting(
     "ocr_disambiguation_display_seconds",
     type=float,
-    default=5,
+    default=4,
     desc="Adjust how long disambiguation display is shown. Use 0 to remove timeout.",
 )
 mod.setting(
@@ -110,7 +110,7 @@ mod.setting(
 mod.setting(
     "ocr_behavior_when_no_eye_tracker",
     type=Literal["MAIN_SCREEN", "ACTIVE_WINDOW"],
-    default="MAIN_SCREEN",
+    default="ACTIVE_WINDOW",
     desc="Region to OCR when no data from the eye tracker",
 )
 
