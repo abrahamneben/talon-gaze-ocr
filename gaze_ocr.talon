@@ -27,16 +27,16 @@ mode: user.dictation_command
     mouse_click(0)
     key("{modifiers}:up")
 
-(eye | i) scroll up:
+(eye | i) scroll down:
     user.move_cursor_to_gaze_point(0, 40)
     user.mouse_scroll_up()
-(eye | i) scroll up half:
+(eye | i) scroll down half:
     user.move_cursor_to_gaze_point(0, 40)
     user.mouse_scroll_up(0.5)
-(eye | i) scroll down:
+(eye | i) scroll up:
     user.move_cursor_to_gaze_point(0, -40)
     user.mouse_scroll_down()
-(eye | i) scroll down half:
+(eye | i) scroll up half:
     user.move_cursor_to_gaze_point(0, -40)
     user.mouse_scroll_down(0.5)
 (eye | i) scroll left:
@@ -61,26 +61,26 @@ ocr show boxes: user.show_ocr_overlay("boxes")
 # Example: "hover seen apple" to hover the cursor over the word "apple".
 (hover (seen | scene) | cursor move) <user.timestamped_prose>$: user.move_cursor_to_word(timestamped_prose)
 # Example: "touch apple" to click the word "apple".
-[left] (touch | click) <user.timestamped_prose>$:
+[left] (touch | click) text <user.timestamped_prose>$:
     user.click_text(timestamped_prose)
-[left] double (touch | click) <user.timestamped_prose>$:
+[left] double (touch | click) text <user.timestamped_prose>$:
     user.double_click_text(timestamped_prose)
-right (touch | click) <user.timestamped_prose>$:
+right (touch | click) text <user.timestamped_prose>$:
     user.right_click_text(timestamped_prose)
 middle (touch | click) <user.timestamped_prose>$:
     user.middle_click_text(timestamped_prose)
-<user.modifiers> (touch | click) <user.timestamped_prose>$:
+<user.modifiers> (touch | click) text <user.timestamped_prose>$:
     user.modifier_click_text(modifiers, timestamped_prose)
 # Example: "go before apple" to move the text cursor before the word "apple".
 (go before | pre (seen | scene)) <user.timestamped_prose>$: user.move_text_cursor_to_word(timestamped_prose, "before")
 (go after | post (seen | scene)) <user.timestamped_prose>$: user.move_text_cursor_to_word(timestamped_prose, "after")
-# Examples: 
+# Examples:
 # "select apple" to select the word "apple".
 # "select apple through banana" to select the phrase "apple pear banana".
 # "select through before apple" to select from the text cursor position to before the word "apple".
-select <user.prose_range>$:
-    user.perform_ocr_action("select", "", prose_range)
-# Examples: 
+#select <user.prose_range>$:
+#    user.perform_ocr_action("select", "", prose_range)
+# Examples:
 # "take seen apple" to select the word "apple".
 # "copy seen apple through banana" to copy the phrase "apple pear banana".
 # "copy all seen apple" to copy all text from the field containing the word "apple".
