@@ -56,7 +56,7 @@ mod.setting(
 mod.setting(
     "ocr_logging_dir",
     type=str,
-    default=None,
+    default="/tmp",
     desc="If specified, log OCR'ed images to this directory.",
 )
 mod.setting(
@@ -795,6 +795,16 @@ class GazeOcrActions:
             actions.mouse_click(0)
 
         actions.user.move_cursor_to_text_and_do(text, double_click)
+
+    def triple_click_text(text: TimestampedText):
+        """Triple-lick on the provided on-screen text."""
+
+        def triple_click() -> None:
+            actions.mouse_click(0)
+            actions.mouse_click(0)
+            actions.mouse_click(0)
+
+        actions.user.move_cursor_to_text_and_do(text, triple_click)
 
     def right_click_text(text: TimestampedText):
         """Right-click on the provided on-screen text."""
